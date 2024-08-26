@@ -13,7 +13,7 @@ pipeline {
                       }
            stage (deployment) {
                 steps {
-                 sh 'cp target/Jenks1 /home/shubham/Documents/devops/apache-tomcat-9.0.93/webapps'
+                 sh 'cp target/Jenks1.war /home/shubham/Documents/devops/apache-tomcat-9.0.93/webapps'
 }
 }
 }
