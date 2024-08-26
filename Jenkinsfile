@@ -2,17 +2,17 @@ pipeline {
      agent any 
        stages {
           stage (checkout) {
-              step {
+              steps {
                   git 'https://github.com/shubhmatre/Jenks1.git'
                     }
                  }
           stage (compile) {
-               step {
+               steps {
                   sh 'mvn install'
                     }
                       }
            stage (deployment) {
-                step {
+                steps {
                  sh 'cp target/Jenks1 /home/shubham/Documents/devops/apache-tomcat-9.0.93/webapps'
 }
 }
