@@ -16,4 +16,3 @@ pipeline {
                         sh 'cp target/Jenks1.war /home/grras/main/apache-tomcat-9.0.79/webapps'
                         }}
 }}
-~                
