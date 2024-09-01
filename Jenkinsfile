@@ -1,20 +1,19 @@
 pipeline {
-     agent any 
-       stages {
-          stage (checkout) {
-              steps {
-                  git 'https://github.com/shubhmatre/Jenks1.git'
-                    }
-                 }
-          stage (compile) {
-               steps {
-                  sh 'mvn install'
-                    }
-                      }
-           stage (deployment) {
+        agent{
+        label 'slave'
+        }
+        stages {
+            stage('Checkout') {
                 steps {
-                 sh 'cp target/Jenks1.war /home/shubham/Documents/devops/apache-tomcat-9.0.93/webapps'
-}
-}
-}
-}
+                        checkout scm
+                      }}
+                stage('Build') {
+                   steps {
+                          sh 'JAVA_HOME=/home/grras/slave/jdk-11.0.20 /home/grras/slave/apache-maven-3.9.4/bin/mvn install'
+                         }}
+                stage('Deployment'){
+                    steps {
+                        sh 'cp target/Jenks1.war /home/grras/slave/apache-tomcat-9.0.79/webapps'
+                        }}
+}}
+~                
